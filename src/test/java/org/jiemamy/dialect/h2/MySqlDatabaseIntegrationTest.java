@@ -74,11 +74,11 @@ public class MySqlDatabaseIntegrationTest extends H2DatabaseTest {
 	// FORMAT-OFF
 	private static final String VIEW_DEFINITION = "/* ALGORITHM=UNDEFINED */ "
 			+ "select "
-				+ "jiemamy01.T_FOO.ID AS ID,"
-				+ "jiemamy01.T_FOO.NAME AS NAME,"
-				+ "jiemamy01.T_FOO.HOGE AS HOGE "
-			+ "from jiemamy01.T_FOO "
-			+ "where (jiemamy01.T_FOO.ID > 10)";
+				+ "T_FOO.ID AS ID,"
+				+ "T_FOO.NAME AS NAME,"
+				+ "T_FOO.HOGE AS HOGE "
+			+ "from T_FOO "
+			+ "where (T_FOO.ID > 10)";
 	// FORMAT-ON
 	
 	/**
@@ -187,7 +187,7 @@ public class MySqlDatabaseIntegrationTest extends H2DatabaseTest {
 		
 		File outFile = new File("target/testresult/H2DatabaseTest_test04.sql");
 		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
-		config.setDataSetIndex(0);
+		config.setDataSetIndex(-1);
 		config.setEmitDropStatements(false);
 		config.setOutputFile(outFile);
 		config.setOverwrite(true);
@@ -266,7 +266,7 @@ public class MySqlDatabaseIntegrationTest extends H2DatabaseTest {
 		
 		File outFile = new File("target/testresult/H2DatabaseTest_test03.sql");
 		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
-		config.setDataSetIndex(0);
+		config.setDataSetIndex(-1);
 		config.setEmitDropStatements(false);
 		config.setOutputFile(outFile);
 		config.setOverwrite(true);
