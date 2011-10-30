@@ -114,14 +114,13 @@ public class H2Dialect extends AbstractDialect {
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(REAL)));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(DOUBLE)));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(BOOLEAN)));
-		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(BOOLEAN, "BIT")));
-		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(BOOLEAN, "BOOL")));
+		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(BOOLEAN, "BIT", "BOOL")));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(TIME)));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(DATE)));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(TIMESTAMP)));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(TIMESTAMP, "DATETIME")));
 		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(TIMESTAMP, "SMALLDATETIME")));
-		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(VARCHAR),
+		typeEntries.add(new Entry(new SimpleRawTypeDescriptor(VARCHAR, "VARCHAR2", "NVARCHAR", "NVARCHAR2", "VARCHAR_CASESENSITIVE"),
 				new HashMap<TypeParameterKey<?>, Necessity>() {{
 					put(TypeParameterKey.SIZE, Necessity.REQUIRED);
 			}}));
