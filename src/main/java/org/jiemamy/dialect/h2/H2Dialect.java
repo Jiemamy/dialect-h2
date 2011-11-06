@@ -44,6 +44,7 @@ import org.jiemamy.dialect.AbstractDialect;
 import org.jiemamy.dialect.DatabaseMetadataParser;
 import org.jiemamy.dialect.DefaultDatabaseMetadataParser;
 import org.jiemamy.dialect.DefaultSqlEmitter;
+import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.Necessity;
 import org.jiemamy.dialect.SqlEmitter;
 import org.jiemamy.model.datatype.SimpleRawTypeDescriptor;
@@ -52,7 +53,7 @@ import org.jiemamy.validator.CompositeValidator;
 import org.jiemamy.validator.Validator;
 
 /**
- * TODO for daisuke
+ * H2Database用 {@link Dialect} 実装クラス。
  * 
  * @version $Id$
  * @author daisuke
