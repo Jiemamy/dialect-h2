@@ -41,7 +41,7 @@ import org.jiemamy.composer.exporter.SqlExporter;
 import org.jiemamy.composer.importer.DbImporter;
 import org.jiemamy.model.DbObject;
 import org.jiemamy.model.column.JmColumnBuilder;
-import org.jiemamy.model.constraint.SimpleJmPrimaryKeyConstraint;
+import org.jiemamy.model.constraint.JmPrimaryKeyConstraint;
 import org.jiemamy.model.datatype.RawTypeCategory;
 import org.jiemamy.model.datatype.RawTypeDescriptor;
 import org.jiemamy.model.datatype.SimpleDataType;
@@ -49,8 +49,8 @@ import org.jiemamy.model.datatype.SimpleRawTypeDescriptor;
 import org.jiemamy.model.datatype.TypeParameterKey;
 import org.jiemamy.model.table.JmTable;
 import org.jiemamy.model.table.JmTableBuilder;
-import org.jiemamy.model.table.SimpleJmTable;
-import org.jiemamy.model.view.SimpleJmView;
+import org.jiemamy.model.table.JmTable;
+import org.jiemamy.model.view.JmView;
 import org.jiemamy.test.H2DatabaseTest;
 import org.jiemamy.test.TestModelBuilders;
 import org.jiemamy.utils.DbCleaner;
@@ -170,16 +170,16 @@ public class MySqlDatabaseIntegrationTest extends H2DatabaseTest {
 		
 		{
 			// FORMAT-OFF
-			SimpleJmTable table = new JmTableBuilder("T_FOO")
+			JmTable table = new JmTableBuilder("T_FOO")
 					.with(new JmColumnBuilder("ID").type(aiInteger).build())
 					.with(new JmColumnBuilder("NAME").type(varchar32).build())
 					.with(new JmColumnBuilder("HOGE").type(new SimpleDataType(INTEGER)).build())
 					.build();
 			// FORMAT-ON
-			table.store(SimpleJmPrimaryKeyConstraint.of(table.getColumn("ID")));
+			table.store(JmPrimaryKeyConstraint.of(table.getColumn("ID")));
 			context.store(table);
 			
-			SimpleJmView view = new SimpleJmView();
+			JmView view = new JmView();
 			view.setName("V_BAR");
 			view.setDefinition(VIEW_DEFINITION);
 			context.store(view);
@@ -245,23 +245,23 @@ public class MySqlDatabaseIntegrationTest extends H2DatabaseTest {
 		context.setMetadata(meta);
 		
 		// FORMAT-OFF
-		SimpleJmTable foo = new JmTableBuilder("T_FOO")
+		JmTable foo = new JmTableBuilder("T_FOO")
 				.with(new JmColumnBuilder("ID").type(aiInteger).build())
 				.with(new JmColumnBuilder("NAME").type(varchar32).build())
 				.with(new JmColumnBuilder("HOGE").type(new SimpleDataType(INTEGER)).build())
 				.build();
 		// FORMAT-ON
-		foo.store(SimpleJmPrimaryKeyConstraint.of(foo.getColumn("ID")));
+		foo.store(JmPrimaryKeyConstraint.of(foo.getColumn("ID")));
 		context.store(foo);
 		
 		// FORMAT-OFF
-		SimpleJmTable bar = new JmTableBuilder("T_BAR")
+		JmTable bar = new JmTableBuilder("T_BAR")
 				.with(new JmColumnBuilder("ID").type(aiInteger).build())
 				.with(new JmColumnBuilder("NAME").type(varchar32).build())
 				.with(new JmColumnBuilder("FUGA").type(new SimpleDataType(INTEGER)).build())
 				.build();
 		// FORMAT-ON
-		bar.store(SimpleJmPrimaryKeyConstraint.of(bar.getColumn("ID")));
+		bar.store(JmPrimaryKeyConstraint.of(bar.getColumn("ID")));
 		context.store(bar);
 		
 		File outFile = new File("target/testresult/H2DatabaseTest_test03.sql");
